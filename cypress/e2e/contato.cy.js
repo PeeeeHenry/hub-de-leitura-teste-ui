@@ -1,7 +1,10 @@
 describe('Funcionalidade: Contato', () => {
 
+  beforeEach(() => {
+    cy.visit('index.html');
+  });
+
   it('Deve preencher formulário de contato com sucesso', () => {
-    cy.visit('http://localhost:3000/index.html');
     cy.get('[name="name"]').type('Pedro Alcantara');
     cy.get('[name="email"]').type('pedro@example.com');
     cy.get('[name="subject"]').select('Sugestões');
@@ -11,7 +14,6 @@ describe('Funcionalidade: Contato', () => {
   });
 
   it('Deve validar mensagem de erro ao enviar sem preencher nome', () => {
-    cy.visit('http://localhost:3000/index.html');
     cy.get('[name="email"]').type('pedro@example.com');
     cy.get('[name="subject"]').select('Sugestões');
     cy.get('[name="message"]').type('Mensagem de teste');
@@ -20,7 +22,6 @@ describe('Funcionalidade: Contato', () => {
   });
 
   it('Deve validar mensagem de erro ao enviar sem preencher email', () => {
-    cy.visit('http://localhost:3000/index.html');
     cy.get('[name="name"]').type('Pedro Alcantara');
     cy.get('[name="subject"]').select('Sugestões');
     cy.get('[name="message"]').type('Mensagem de teste');
@@ -29,7 +30,6 @@ describe('Funcionalidade: Contato', () => {
   });
 
   it('Deve validar mensagem de erro ao enviar sem selecionar o assunto', () => {
-    cy.visit('http://localhost:3000/index.html');
     cy.get('[name="name"]').type('Pedro Alcantara');
     cy.get('[name="email"]').type('pedro@example.com');
     cy.get('[name="message"]').type('Mensagem de teste');
@@ -38,7 +38,6 @@ describe('Funcionalidade: Contato', () => {
   });
 
   it('Deve validar mensagem de erro ao enviar sem preencher mensagem', () => {
-    cy.visit('http://localhost:3000/index.html');
     cy.get('[name="name"]').type('Pedro Alcantara');
     cy.get('[name="email"]').type('pedro@example.com');
     cy.get('[name="subject"]').select('Sugestões');
